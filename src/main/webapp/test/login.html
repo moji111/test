@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>登陆</title>
+		<script type="text/javascript" src="../js/layui/layui.js"></script>
+		<link rel="stylesheet" href="../js/layui/css/layui.css" />
+		<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js" ></script>
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+		
+		<style type="text/css">
+			body {
+				background-color: #FAF8FB;
+			}
+			
+			#top {
+				height: 20px;
+				width: 100% !important;
+				<!--background-color: #B2DFEE;-->
+				margin: 0;
+			}
+			
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#left{
+				float: left;
+				width: 50%;
+				
+			}
+			#right{
+				float: right;
+				width: 30%;
+			}
+			h1{
+				font-family: "微软雅黑";
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<!--上边块-->
+		<div id="top">
+
+			<!--#eeeeee-->
+		</div>
+					<hr color="#987cb9" style="color: #000000;"/>
+<br /><br /><br />
+		<!--下边块-->
+		<div class="layui-container">
+			<div class="layui-row">
+
+				<!--左边块-->
+				<div id='left' class="layui-col-lg8">
+					<ul class="layui-timeline">
+  <li class="layui-timeline-item">
+    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+    <div class="layui-timeline-content layui-text">
+      <h3 class="layui-timeline-title">8月18日</h3>
+      <p>
+       世界上所有的相遇都是久别重逢。
+      </p>
+    </div>
+  </li>
+  <li class="layui-timeline-item">
+    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+    <div class="layui-timeline-content layui-text">
+      <h3 class="layui-timeline-title">8月16日</h3>
+      <p>那时我们有梦，关于文学，关于爱情，关于穿越世界的旅行。如今我们深夜饮酒，杯子碰到一起，都是梦破碎的声音。</p>
+    </div>
+  </li>
+  <li class="layui-timeline-item">
+    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+    <div class="layui-timeline-content layui-text">
+      <h3 class="layui-timeline-title">8月15日</h3>
+      <p>
+        鲜花怒骂少年时，一日看尽长安花。
+      </p>
+    </div>
+  </li>
+  <li class="layui-timeline-item">
+    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+    <div class="layui-timeline-content layui-text">
+      <div class="layui-timeline-title">过去</div>
+    </div>
+  </li>
+</ul>
+				</div>
+				
+				
+				<!--右边块 -->
+				<div id="right" class="layui-col-lg4">
+					<form   class="form-horizontal" >
+						<div>
+							<h1>用户登陆</h1>
+						</div>
+						<br />
+						<div class="form-group">
+						<input class="form-control" type="text" placeholder="账号\手机号码\邮箱" id="username" name="username" autofocus="autofocus" maxlength="20" />
+						</div>
+						<br />
+						
+						<div class="form-group">
+						<input class="form-control" type="password" placeholder="请输入密码" id="password" name="password" maxlength="8" />
+						<br />
+						</div>
+						
+						
+						<div class="form-group row">
+						
+						<div class="col-md-6" style="margin-left:-12px;">
+						
+						  	<input id="varycode"  class="form-control" type="text" placeholder="验证码">
+							
+						</div>
+						<div class="col-md-6">
+							<img alt="yingyingy" src="/situ_test1/common/authCode" onclick='this.src="/situ_test1/common/authCode?"+Math.random()'>
+						
+						</div>
+						
+						</div>
+						
+						
+						<div>
+						
+							<button type="submit" class="btn">登陆</button>
+							<input type="button" onclick="sub()">
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+		
+		
+		  <script type="text/javascript">
+  function sub() {
+	  alert("1")
+		$.ajax({
+			type:"get",
+			url : "/situ_test1/user/login",
+			data :{
+				code : $("#username").val(),
+				pass : $("#password").val(),
+				authCode : $("#varycode").val()
+			},
+			dataType :"text",
+			success:function (data){
+				alert("登陆成功");
+				console.log(data);
+			}
+		})
+	}
+  </script>
+		
+		
+		<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="../js/Rx.min.js" ></script>
+<script type="text/javascript" src="../js/TweenMax.min.js" ></script>
+	</body>
+	
+
+</html>

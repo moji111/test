@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+姓&nbsp;名:<input type="text" placeholder="不能为数字">
+年&nbsp;龄:<input type="text" placeholder="必须为数字">
+<button onclick="testadd()">添加</button>
+<br><br>
+姓&nbsp;名:<input type="text" placeholder="姓名">
+<button onclick="testselect()">搜索</button>
+<p id='aaa'></p>
+<br>
+<br>
+<table style="border:1px solid black;width:600px;">
+<thead>
+<tr>
+	<th style="width:15%; text-align: left">ID</th>
+	<th style="width:30%; text-align: left">姓名</th>
+	<th style="width:30%; text-align: left">年龄</th>
+	<th style="width:25%; text-align: left">操作</th>
+</tr>
+</thead>
+	<tbody id="tbody"></tbody>
+</table>
+
+<script type="text/javascript">
+
+	var vInput = document.getElementsByTagName('input');
+	var vTbody = document.getElementsById('tbody');
+	var vId =1;
+	function testadd(){
+		var a = vInput[0].value;
+		var b = vInput[1].value;
+		//if(a==""||b==""||/\d+/.test(a)||/\D+/.test(b)){
+			//alert('准确填写后才能添加');
+			//return;
+		//}
+		alert(vId);
+		var oTr = document.createElement('tr');
+
+		var oTd = document.createElement('td');
+		oTd.innerHTML =vId++;
+		oTr.appendChild(oTd);
+		var oTd = document.createElement('td');
+		oTd.innerHTML = a;
+		oTr.appendChild(oTd);
+		
+		var oTd = document.createElement('td');
+		oTd.innerHTML = b;
+		oTr.appendChild(oTd);
+		
+		var oTd = document.createElement('td');
+		oTd.innerHTML='<a href="#">删除</a>&nbsp;&nbsp;<a href="#">修改</a>';
+		var atag = oTd.getElementsByTagName('a');
+		atag[0].onclick = testdelete;
+		atag[1].onclick = testupdate;
+		oTr.appendChild(oTd);
+		document.getElementById("tbody").appendChild(oTr);
+		
+		
+	} 
+	function testdelete(){
+		var temp = this.parentNode.parentNode;
+		temp.style.backgroundColor = 'yellow';
+		
+		if(confirm("是否删除此行")){
+			document.getElementById("tbody").removeChild(temp);
+		}else{
+			temp.removeAttribute('Style');
+		}
+	}
+	function testupdate(){
+		var tee = this.parentNode;
+		var tAge = tee.previousSibling;
+		var tName = tee.previousSibling.previousSibling;
+		var tId = tName.previousSibling.innerHTML;
+		tAge.innerHTML='<input type="text" id = "tAge'+tId+'" value="'+tAge.innerHTML+'">'
+		tName.innerHTML = '<input type="text" id = "tName'+tId+'" value="'+tName.innerHTML+'">'
+		tee.innerHTML="<a href='javascript:;'>保存</a>";
+		tee.getElementsByTagName('a')[0].onclick=function(){
+			tAge.innerHTML=document.getElementById('tAge'+tId).value;
+			tName.innerHTML=document.getElementById('tNmame'+tId).value;
+			tee.innerHTML = '<a href="javascript:;">删除</a>&nbsp;&nbsp;<a href="#">修改</a>';
+			var atag = oTd.getElementsByTagName('a');
+			atag[0].onclick = testdelete;
+			atag[1].onclick = testupdate;
+		}
+	}
+	function testselect(){
+		var rouws = document.getElementsByTagName("tr");
+		var lent = rous.length;
+		for (var i=1; i<len ; i++){
+			rous[i].removeAttribute('style');
+			
+		}
+		var i2 = vInput[2].value;
+		if(i2==''){
+			return;
+		}
+		for(var i = 1;i<len;i++){
+			var oTab=rows[i].cells[1].innerHTML;
+			if(oTab.indexOf(i2)>-1){//oTab == i2
+				rows[i].style.backgroundColor = "red";
+			}
+		}
+				
+	}
+
+
+</script>
+</body>
+</html>

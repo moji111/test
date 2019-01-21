@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div{
+background-color:#EADACD;
+	color: red;
+}
+
+</style>
+</head>
+<body>
+<div>
+	<form action="" method="post">
+	用户名:<input type="text" id="username"><br>
+	密码:<input type="password"><br>
+	性别: <input type="radio" name="sex" value="1" checked="checked"><span>男</span>
+	<input type="radio" name = "sex" value="2"><span>女</span> <br>
+	爱好:<input type="checkbox" name="hobby" value="1" checked="checked">跳&nbsp;舞
+	<input type="checkbox" name="hobby" value="2">唱&nbsp;歌<br>
+	<input type ="hidden" value="这是一段奇怪的文字">
+	喜欢的水果:<select name="sel">
+	<option value="pingguo">苹果
+	<option value="juzi">橘子
+	<option value="li">梨	
+	</select><br>
+	个人简介:
+	<textarea rows="7" cols="7" name="jianjie"></textarea><br>
+	<input type="submit" value="提交"> &nbsp;&nbsp;&nbsp;
+	<input type="reset" value="取消">
+	<a href="mailto:649579004@qq.com">yingyingying</a>
+	</form>
+	</div>
+	<button value="111" onclick="tt()">yingying</button><br>
+	<div id="aa"></div>
+	<script type="text/javascript">
+	function s1()
+	{
+		var a = 0;
+		function s2()
+		{
+			a++;
+			alert(a);
+		}
+		return s2;
+	}
+	function tt()
+	{
+		var ss = s1();
+		alert(typeof ss);
+		alert(typeof ss());
+ 		var w = ss(); //这里调用了函数ss() 因此会执行
+		alert(ss);
+		alert(ss());
+	}
+	
+		var f1 = function(){
+			var data = new Date();
+			var s = data.toLocaleString();
+			document.getElementById("aa").innerHTML = s;
+	}
+	
+	var x = setInterval(f1 , 1000);
+	
+	
+	
+	function stop1(){
+		claerInterval(x);
+}
+	
+	$.ajax({
+		type : "get",
+		url :"situ_test1"
+	})
+	
+	</script>
+</body>
+</html>
